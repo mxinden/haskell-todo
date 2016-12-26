@@ -18,12 +18,10 @@ parse [] = usage
 parse _ = usage
 
 add :: [String] -> IO ()
-add [] = usage
 add [fileName, todoItem] = appendFile fileName (todoItem ++ "\n")
 add _ = usage
 
 view :: [String] -> IO ()
-view [] = usage
 view [fileName] = do
   contents <- readFile fileName
   let todoTasks = lines contents
@@ -32,7 +30,6 @@ view [fileName] = do
 view _ = usage
 
 remove :: [String] -> IO ()
-remove [] = usage
 remove [fileName, numberString] = do
   contents <- readFile fileName
   let todoTasks = lines contents
